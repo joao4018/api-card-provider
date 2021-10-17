@@ -16,7 +16,7 @@ public class CardProviderService {
 
     public Card randomCard() {
         Random rand = new Random();
-        List<Card> cardAdapterProviderAll = cardAdapterProvider.findAll();
+        List<Card> cardAdapterProviderAll = cardAdapterProvider.findAllCards();
         return cardAdapterProviderAll.get(rand.nextInt(cardAdapterProviderAll.size()));
     }
 }
