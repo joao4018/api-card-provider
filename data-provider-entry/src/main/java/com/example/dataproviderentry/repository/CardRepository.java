@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<CardEntity, Long>, CardAdapterProvider {
-    default List<Card> findAllCards() {
+    default Optional<List<Card>> findAllCards() {
         List<Card> cards = new ArrayList<>();
         List<CardEntity> all = this.findAll();
 
@@ -18,6 +19,6 @@ public interface CardRepository extends JpaRepository<CardEntity, Long>, CardAda
             cards.add(card);
         }
 
-        return cards;
+        return Optional.ofNullable(cards);
     }
 }

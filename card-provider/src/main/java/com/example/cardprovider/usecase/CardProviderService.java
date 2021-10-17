@@ -3,8 +3,7 @@ package com.example.cardprovider.usecase;
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.entity.Card;
 
-import java.util.List;
-import java.util.Random;
+import java.util.Optional;
 
 public class CardProviderService {
 
@@ -15,8 +14,10 @@ public class CardProviderService {
     }
 
     public Card randomCard() {
-        Random rand = new Random();
-        List<Card> cardAdapterProviderAll = cardAdapterProvider.findAllCards();
-        return cardAdapterProviderAll.get(rand.nextInt(cardAdapterProviderAll.size()));
+        Optional<Card> cardAdapterProviderAll = cardAdapterProvider.findAllCards()
+                .stream()
+                .findAny()
+                .flatMap(cards -> cards.stream().findAny());
+        return cardAdapterProviderAll.orElseThrow();
     }
 }
