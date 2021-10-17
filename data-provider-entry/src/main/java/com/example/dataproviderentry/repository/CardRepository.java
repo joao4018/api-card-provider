@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<CardEntity, Long>, CardAdapterProvider {
-    default Optional<List<Card>> findAllCards() {
-        return Optional.ofNullable(CardMapper.INSTANCE.toListCard(this.findAll()));
+    default List<Card> findAllCards() {
+        return CardMapper.INSTANCE.toListCard(this.findAll());
     }
 }

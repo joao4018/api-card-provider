@@ -4,7 +4,7 @@ import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.entity.Card;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Random;
 
 public class CardProviderService {
 
@@ -15,10 +15,8 @@ public class CardProviderService {
     }
 
     public Card randomCard() {
-        Optional<Card> cardAdapterProviderAll = cardAdapterProvider.findAllCards()
-                .stream()
-                .findAny()
-                .flatMap(cards -> cards.stream().findAny());
-        return cardAdapterProviderAll.orElseThrow();
+        Random random = new Random();
+        List<Card> allCards = cardAdapterProvider.findAllCards();
+        return allCards.get(random.nextInt(allCards.size()));
     }
 }
