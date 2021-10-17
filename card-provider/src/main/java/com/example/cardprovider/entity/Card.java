@@ -2,20 +2,20 @@ package com.example.cardprovider.entity;
 
 public class Card {
 
-    private String name;
+    private String card;
     private String description;
 
-    public Card(String name, String description) {
-        this.name = name;
+    public Card(String card, String description) {
+        this.card = card;
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getCard() {
+        return card;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCard(String card) {
+        this.card = card;
     }
 
     public String getDescription() {
