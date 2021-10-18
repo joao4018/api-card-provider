@@ -1,6 +1,7 @@
 package com.example.dataproviderentry.controller;
 
-import com.example.cardprovider.entity.Card;
+import com.example.cardprovider.entity.CardContract;
+import com.example.cardprovider.entity.impl.Card;
 import com.example.cardprovider.usecase.CardProviderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,7 @@ public class CardController {
     private final CardProviderService cardProviderService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Card> list() {
+    public ResponseEntity<CardContract> list() {
         return new ResponseEntity<>(cardProviderService.randomCard(), HttpStatus.OK);
     }
 
