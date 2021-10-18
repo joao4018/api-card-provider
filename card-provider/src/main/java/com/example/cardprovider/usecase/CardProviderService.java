@@ -2,6 +2,8 @@ package com.example.cardprovider.usecase;
 
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.entity.CardContract;
+import com.example.cardprovider.entity.impl.Card;
+import com.example.cardprovider.response.CardResponse;
 
 import java.util.List;
 import java.util.Random;
@@ -16,13 +18,13 @@ public class CardProviderService {
         this.cardAdapterProvider = cardAdapterProvider;
     }
 
-    public CardContract randomCard() {
+    public CardResponse randomCard() {
         Random random = new Random();
         List<CardContract> allCards = cardAdapterProvider.findAllCards();
         if (allCards.isEmpty()) {
             throw new IndexOutOfBoundsException(ARRAY_VAZIO);
         }
-        return allCards.get(random.nextInt(allCards.size()));
-
+        CardContract cardContract = allCards.get(random.nextInt(allCards.size()));
+        return new CardResponse(cardContract.getCard(), cardContract.getDescription());
     }
 }
