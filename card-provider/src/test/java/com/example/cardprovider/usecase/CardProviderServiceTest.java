@@ -3,7 +3,7 @@ package com.example.cardprovider.usecase;
 
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.builders.BuilderCard;
-import com.example.cardprovider.entity.Card;
+import com.example.cardprovider.entity.CardContract;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
@@ -33,13 +33,13 @@ public class CardProviderServiceTest {
 
     @Test
     void randomCardTest() {
-        List<Card> cards = BuilderCard.cardBuilder();
+        List<CardContract> cards = BuilderCard.cardBuilder();
         Mockito.when(cardAdapterProvider.findAllCards()).thenReturn(cards);
         Assert.assertTrue(cards.contains(cardProviderService.randomCard()));
     }
 
     @Test
-    void randomCardTestException()  {
+    void randomCardTestException() {
         Assert.assertThrows(ARRAY_VAZIO, IndexOutOfBoundsException.class, () -> {
             Mockito.when(cardAdapterProvider.findAllCards()).thenReturn(Collections.emptyList());
             cardProviderService.randomCard();
