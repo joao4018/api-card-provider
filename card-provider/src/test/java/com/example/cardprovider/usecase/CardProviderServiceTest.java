@@ -4,6 +4,7 @@ package com.example.cardprovider.usecase;
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.builders.BuilderCard;
 import com.example.cardprovider.entity.CardContract;
+import com.example.cardprovider.entity.impl.Card;
 import com.example.cardprovider.response.CardResponse;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -36,7 +37,7 @@ public class CardProviderServiceTest {
 
     @Test
     void randomCardTest() {
-        List<CardContract> cards = BuilderCard.cardBuilder();
+        List<Card> cards = BuilderCard.cardBuilder();
 
         List<CardResponse> cardResponses = cards
                 .stream()

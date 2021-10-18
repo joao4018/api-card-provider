@@ -20,7 +20,7 @@ public class CardProviderService {
 
     public CardResponse randomCard() {
         Random random = new Random();
-        List<CardContract> allCards = cardAdapterProvider.findAllCards();
+        List<Card> allCards = cardAdapterProvider.findAllCards();
         if (allCards.isEmpty()) {
             throw new IndexOutOfBoundsException(ARRAY_VAZIO);
         }
