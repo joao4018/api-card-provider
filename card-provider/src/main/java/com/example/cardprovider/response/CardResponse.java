@@ -1,21 +1,18 @@
 package com.example.cardprovider.response;
 
+import com.example.cardprovider.entity.impl.Card;
+
 public class CardResponse {
 
-    private String card;
-    private String description;
+    private Card card;
 
-    public CardResponse(String card, String description) {
+    public CardResponse(Card card) {
         this.card = card;
-        this.description = description;
     }
 
-    public String getCard() {
+    public Card getCard() {
         return card;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
 }

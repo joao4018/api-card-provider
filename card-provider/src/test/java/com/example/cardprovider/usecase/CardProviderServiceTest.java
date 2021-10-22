@@ -3,9 +3,9 @@ package com.example.cardprovider.usecase;
 
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.builders.BuilderCard;
-import com.example.cardprovider.entity.CardContract;
 import com.example.cardprovider.entity.impl.Card;
 import com.example.cardprovider.response.CardResponse;
+import com.example.cardprovider.usecase.impl.CardProviderServiceImpl;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
@@ -30,7 +30,7 @@ public class CardProviderServiceTest {
     CardAdapterProvider cardAdapterProvider;
 
     @InjectMocks
-    CardProviderService cardProviderService;
+    CardProviderServiceImpl cardProviderService;
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -41,11 +41,18 @@ public class CardProviderServiceTest {
 
         List<CardResponse> cardResponses = cards
                 .stream()
-                .map(card -> new CardResponse(card.getCard(), card.getDescription()))
+                .map(CardResponse::new)
                 .collect(Collectors.toList());
 
         Mockito.when(cardAdapterProvider.findAllCards()).thenReturn(cards);
-        Assertions.assertTrue(cardResponses.contains(cardProviderService.randomCard()));
+        CardResponse actual = cardProviderService.randomCard();
+
+        Assertions.assertTrue(() -> {
+            List<CardResponse> collect = cardResponses.stream()
+                    .filter(cardResponse -> cardResponse.getCard().equals(actual.getCard()))
+                    .collect(Collectors.toList());
+            return !collect.isEmpty();
+        });
     }
 
     @Test
