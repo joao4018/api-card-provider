@@ -1,15 +1,13 @@
 package com.example.cardprovider.usecase.impl;
 
 import com.example.cardprovider.adapter.CardAdapterProvider;
-import com.example.cardprovider.entity.CardContract;
 import com.example.cardprovider.entity.impl.Card;
 import com.example.cardprovider.response.CardResponse;
 import com.example.cardprovider.usecase.CardProviderService;
 
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Random;
-
-import static com.example.cardprovider.constants.exception.ExceptionConstants.ARRAY_VAZIO;
 
 public class CardProviderServiceImpl implements CardProviderService {
 
@@ -24,7 +22,7 @@ public class CardProviderServiceImpl implements CardProviderService {
         Random random = new Random();
         List<Card> allCards = cardAdapterProvider.findAllCards();
         if (allCards.isEmpty()) {
-            throw new IndexOutOfBoundsException(ARRAY_VAZIO);
+            throw new EmptyStackException();
         }
         Card card = allCards.get(random.nextInt(allCards.size()));
         return new CardResponse(card);
