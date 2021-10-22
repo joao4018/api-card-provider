@@ -4,6 +4,7 @@ package com.example.cardprovider.usecase;
 import com.example.cardprovider.adapter.CardAdapterProvider;
 import com.example.cardprovider.builders.BuilderCard;
 import com.example.cardprovider.entity.impl.Card;
+import com.example.cardprovider.exception.EmptyException;
 import com.example.cardprovider.response.CardResponse;
 import com.example.cardprovider.usecase.impl.CardProviderServiceImpl;
 import org.junit.Assert;
@@ -57,7 +58,7 @@ public class CardProviderServiceTest {
 
     @Test
     void randomCardTestException() {
-        Assert.assertThrows(ARRAY_VAZIO, IndexOutOfBoundsException.class, () -> {
+        Assert.assertThrows(ARRAY_VAZIO, EmptyException.class, () -> {
             Mockito.when(cardAdapterProvider.findAllCards()).thenReturn(Collections.emptyList());
             cardProviderService.randomCard();
         });
