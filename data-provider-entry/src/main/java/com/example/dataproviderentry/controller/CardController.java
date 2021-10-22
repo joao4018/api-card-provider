@@ -1,7 +1,5 @@
 package com.example.dataproviderentry.controller;
 
-import com.example.cardprovider.entity.CardContract;
-import com.example.cardprovider.entity.impl.Card;
 import com.example.cardprovider.response.CardResponse;
 import com.example.cardprovider.usecase.CardProviderService;
 import lombok.RequiredArgsConstructor;
