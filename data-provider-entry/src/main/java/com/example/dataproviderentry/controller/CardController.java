@@ -4,24 +4,22 @@ import com.example.cardprovider.response.CardResponse;
 import com.example.cardprovider.usecase.CardProviderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("list")
+@RequestMapping("cards")
 @Slf4j
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor()
 public class CardController {
 
     private final CardProviderService cardProviderService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<CardResponse> list() {
+    @GetMapping(path = "/cardGame")
+    public ResponseEntity<CardResponse> cardGame() {
         return new ResponseEntity<>(cardProviderService.randomCard(), HttpStatus.OK);
     }
 
