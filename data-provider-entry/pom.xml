@@ -21,6 +21,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <maven-compiler.version>3.8.0</maven-compiler.version>
         <lombok-mapstruct.version>0.1.0</lombok-mapstruct.version>
+        <springdoc-openapi-data-rest.version>1.5.10</springdoc-openapi-data-rest.version>
     </properties>
 
 
@@ -56,10 +57,23 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-data-rest</artifactId>
+            <version>${springdoc-openapi-data-rest.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi-data-rest.version}</version>
         </dependency>
 
     </dependencies>
@@ -71,12 +85,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                        <excludes>
-                            <exclude>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                            </exclude>
-                        </excludes>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
                     <executable>true</executable>
                 </configuration>
             </plugin>
