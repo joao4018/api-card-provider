@@ -75,6 +75,10 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc-openapi-data-rest.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
 
     </dependencies>
 

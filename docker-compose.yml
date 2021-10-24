@@ -10,7 +10,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - './apicard_data:/var/lib/mysql'
+      -   ./scriptSQL:/docker-entrypoint-initdb.d
+      - ./apicard_card/data:/var/lib/mysql
 
 volumes:
   apicard:
